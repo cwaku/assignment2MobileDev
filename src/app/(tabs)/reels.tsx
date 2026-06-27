@@ -4,7 +4,7 @@ import { Colors } from "@/constants/Colors";
 export default function Screen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Home</Text>
+      <Text style={styles.label}>Reels</Text>
     </View>
   );
 }
