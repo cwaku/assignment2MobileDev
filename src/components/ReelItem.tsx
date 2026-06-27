@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, useWindowDimensions } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 import { Post } from "@/types";
@@ -13,8 +13,7 @@ function ReelAction({ icon, label }: { icon: keyof typeof Ionicons.glyphMap; lab
   );
 }
 
-export function ReelItem({ post }: { post: Post }) {
-  const { height } = useWindowDimensions();
+export function ReelItem({ post, height }: { post: Post; height: number }) {
   return (
     <View style={[styles.reel, { height }]}>
       <Image source={post.image} style={StyleSheet.absoluteFill} contentFit="cover" />

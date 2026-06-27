@@ -18,7 +18,7 @@ export default function PostDetail() {
 
   return (
     <ScrollView style={styles.container}>
-      <PostCard post={post} />
+      <PostCard post={post} linkable={false} />
     </ScrollView>
   );
 }

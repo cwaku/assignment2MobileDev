@@ -6,20 +6,32 @@ import { Post } from "@/types";
 import { Colors } from "@/constants/Colors";
 import { Avatar } from "./Avatar";
 
-export function PostCard({ post }: { post: Post }) {
+export function PostCard({ post, linkable = true }: { post: Post; linkable?: boolean }) {
   const router = useRouter();
   const open = () => router.push(`/post/${post.id}`);
 
   return (
     <View style={styles.card}>
-      <Pressable style={styles.header} onPress={open}>
-        <Avatar uri={post.user.avatar} size={34} />
-        <Text style={styles.username}>{post.user.username}</Text>
-        <Ionicons name="ellipsis-horizontal" size={18} color={Colors.icon} style={styles.more} />
-      </Pressable>
-      <Pressable onPress={open}>
+      {linkable ? (
+        <Pressable style={styles.header} onPress={open}>
+          <Avatar uri={post.user.avatar} size={34} />
+          <Text style={styles.username}>{post.user.username}</Text>
+          <Ionicons name="ellipsis-horizontal" size={18} color={Colors.icon} style={styles.more} />
+        </Pressable>
+      ) : (
+        <View style={styles.header}>
+          <Avatar uri={post.user.avatar} size={34} />
+          <Text style={styles.username}>{post.user.username}</Text>
+          <Ionicons name="ellipsis-horizontal" size={18} color={Colors.icon} style={styles.more} />
+        </View>
+      )}
+      {linkable ? (
+        <Pressable onPress={open}>
+          <Image source={post.image} style={styles.image} contentFit="cover" />
+        </Pressable>
+      ) : (
         <Image source={post.image} style={styles.image} contentFit="cover" />
-      </Pressable>
+      )}
       <View style={styles.actions}>
         <Ionicons name="heart-outline" size={26} color={Colors.icon} style={styles.action} />
         <Ionicons name="chatbubble-outline" size={24} color={Colors.icon} style={styles.action} />

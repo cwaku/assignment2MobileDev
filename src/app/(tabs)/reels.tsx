@@ -1,8 +1,10 @@
 import { FlatList, StyleSheet } from "react-native";
+import { useState } from "react";
 import { posts } from "@/data/posts";
 import { ReelItem } from "@/components/ReelItem";
 
 export default function Reels() {
+  const [listHeight, setListHeight] = useState(0);
   return (
     <FlatList
       style={styles.list}
@@ -10,7 +12,8 @@ export default function Reels() {
       keyExtractor={(p) => p.id}
       pagingEnabled
       showsVerticalScrollIndicator={false}
-      renderItem={({ item }) => <ReelItem post={item} />}
+      onLayout={(e) => setListHeight(e.nativeEvent.layout.height)}
+      renderItem={({ item }) => <ReelItem post={item} height={listHeight} />}
     />
   );
 }

@@ -4,7 +4,7 @@ import { Colors } from "@/constants/Colors";
 
 export function Avatar({ uri, size = 40, ring = false }: { uri: string; size?: number; ring?: boolean }) {
   return (
-    <View style={[ring && styles.ring, { borderRadius: (size + 8) / 2 }]}>
+    <View style={[ring && styles.ring, { borderRadius: (size + 10) / 2 }]}>
       <Image source={uri} style={{ width: size, height: size, borderRadius: size / 2 }} contentFit="cover" />
     </View>
   );
