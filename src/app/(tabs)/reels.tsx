@@ -1,15 +1,20 @@
-import { View, Text, StyleSheet } from "react-native";
-import { Colors } from "@/constants/Colors";
+import { FlatList, StyleSheet } from "react-native";
+import { posts } from "@/data/posts";
+import { ReelItem } from "@/components/ReelItem";
 
-export default function Screen() {
+export default function Reels() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Reels</Text>
-    </View>
+    <FlatList
+      style={styles.list}
+      data={posts}
+      keyExtractor={(p) => p.id}
+      pagingEnabled
+      showsVerticalScrollIndicator={false}
+      renderItem={({ item }) => <ReelItem post={item} />}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: Colors.background },
-  label: { color: Colors.text, fontSize: 18 },
+  list: { flex: 1, backgroundColor: "#000" },
 });
